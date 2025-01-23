@@ -5,6 +5,7 @@ import "./globals.css"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,6 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <html lang="de">
       <body className={inter.className}>
@@ -29,31 +31,52 @@ export default function RootLayout({
                 className="w-full"
               />
             </Link>
-            <nav className="hidden md:flex gap-8">
-              <Link
-                href="/fahrzeuge"
-                className={`hover:text-gray-300 transition-colors ${
-                  pathname === "/fahrzeuge" ? "text-white font-bold" : "text-gray-400"
-                }`}
+            <button
+              className={`md:hidden text-gray-400 hover:text-white ${isMenuOpen ? "hidden" : "block"}`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Fahrzeuge
-              </Link>
-              <Link
-                href="/ueber-uns"
-                className={`hover:text-gray-300 transition-colors ${
-                  pathname === "/ueber-uns" ? "text-white font-bold" : "text-gray-400"
-                }`}
-              >
-                Über uns
-              </Link>
-              <Link
-                href="/kontakt"
-                className={`hover:text-gray-300 transition-colors ${
-                  pathname === "/kontakt" ? "text-white font-bold" : "text-gray-400"
-                }`}
-              >
-                Kontakt
-              </Link>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                ></path>
+              </svg>
+            </button>
+            <nav className={`md:flex gap-8 ${isMenuOpen ? "block" : "hidden"} md:block`}>
+              <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+                <Link
+                  href="/fahrzeuge"
+                  className={`hover:text-gray-300 transition-colors ${
+                    pathname === "/fahrzeuge" ? "text-white font-bold" : "text-gray-400"
+                  }`}
+                >
+                  Fahrzeuge
+                </Link>
+                <Link
+                  href="/ueber-uns"
+                  className={`hover:text-gray-300 transition-colors ${
+                    pathname === "/ueber-uns" ? "text-white font-bold" : "text-gray-400"
+                  }`}
+                >
+                  Über uns
+                </Link>
+                <Link
+                  href="/kontakt"
+                  className={`hover:text-gray-300 transition-colors ${
+                    pathname === "/kontakt" ? "text-white font-bold" : "text-gray-400"
+                  }`}
+                >
+                  Kontakt
+                </Link>
+              </div>
             </nav>
           </header>
           {children}
