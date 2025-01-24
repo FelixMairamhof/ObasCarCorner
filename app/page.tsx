@@ -15,18 +15,18 @@ export default function LandingPage() {
     <div className="min-h-screen bg-black text-white">
       <section className="container mx-auto px-4 py-12 md:py-24">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+          <div className="space-y-6 motion-preset-slide-right motion-duration-2000">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight ">
               Qualität muss nicht
               <br />
-              <span className="text-gray-400">teuer sein!</span>
+              <span className="text-gray-400 ">teuer sein!</span>
             </h1>
             <p className="text-xl text-gray-400 max-w-lg">
               Bei Obas Car Corner finden Sie geprüfte Gebrauchtwagen zu fairen Preisen. Jedes Fahrzeug wird von unseren
               Experten gründlich überprüft und instandgesetzt.
             </p>
             <div className="flex gap-4">
-              <Button asChild>
+              <Button variant="secondary" asChild>
                 <Link href="/fahrzeuge">Fahrzeuge ansehen</Link>
               </Button>
               <Button variant="secondary" asChild>
@@ -34,7 +34,7 @@ export default function LandingPage() {
               </Button>
             </div>
           </div>
-          <div className="relative ">
+          <div className="relative motion-preset-slide-left motion-duration-2000">
             <Image
               src="/obas-car-corner.webp"
               alt="Gebrauchtwagen"
@@ -47,7 +47,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-zinc-900 py-16">
+      <section className="bg-zinc-900 py-16 motion-preset-blur-right motion-duration-2000" >
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="space-y-4">
@@ -109,7 +109,7 @@ export default function LandingPage() {
           <p className="text-xl text-gray-400 mb-8">
             Entdecken Sie noch heute unser vielfältiges Angebot an Qualitätsfahrzeugen.
           </p>
-          <Button size="lg" asChild>
+          <Button size="default" variant="secondary" asChild className="motion-preset-oscillate motion-duration-1000">
             <Link href="/fahrzeuge">Jetzt Fahrzeuge entdecken</Link>
           </Button>
         </div>
