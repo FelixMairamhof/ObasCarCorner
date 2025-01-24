@@ -7,6 +7,8 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 
+import { CSPostHogProvider } from './providers'
+
 const inter = Inter({ subsets: ["latin"] })
 
 
@@ -19,6 +21,7 @@ export default function RootLayout({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <html lang="de">
+      <CSPostHogProvider>
       <body className={inter.className}>
         <div className="min-h-screen bg-black text-white">
           <header className="container mx-auto px-4 py-6 flex items-center justify-between border-b border-zinc-800">
@@ -100,6 +103,7 @@ export default function RootLayout({
           </footer>
         </div>
       </body>
+      </CSPostHogProvider>
     </html>
   )
 }
